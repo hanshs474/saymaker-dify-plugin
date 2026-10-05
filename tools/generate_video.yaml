@@ -1,0 +1,85 @@
+identity:
+  name: generate_video
+  author: hanshs474
+  label:
+    en_US: Generate video
+    zh_Hans: 生成视频
+description:
+  human:
+    en_US: >-
+      Make a video clip from a prompt, or animate a still. Default model minimax-h3-fast (runs on a free account); veo-3-1, kling-3-0 and seedance-2 need a plan or a credit pack. Takes minutes.
+    zh_Hans: 生成视频
+  llm: >-
+    Generate one short video clip and return its URL. Describe what happens and how the camera moves. Pass image_url to animate a still as the first frame. This takes several minutes.
+parameters:
+  - name: prompt
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Prompt
+      zh_Hans: 提示词
+    human_description:
+      en_US: What to make. Name subject, lighting, medium and framing; for an edit, the change and what must stay.
+      zh_Hans: 提示词
+    llm_description: >-
+      What to make. Name subject, lighting, medium and framing; for an edit, the change and what must stay.
+  - name: image_url
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Image URL
+      zh_Hans: 图片地址
+    human_description:
+      en_US: Optional public http(s) URL of a still to animate as the first frame.
+      zh_Hans: 图片地址
+    llm_description: >-
+      Optional public http(s) URL of a still to animate as the first frame.
+  - name: aspect_ratio
+    type: select
+    required: false
+    form: llm
+    label:
+      en_US: Aspect ratio
+      zh_Hans: 画面比例
+    human_description:
+      en_US: Shape of the output.
+      zh_Hans: 画面比例
+    llm_description: >-
+      Shape of the output.
+    default: "16:9"
+    options:
+      - value: "16:9"
+        label: { en_US: "16:9", zh_Hans: "16:9" }
+      - value: "9:16"
+        label: { en_US: "9:16", zh_Hans: "9:16" }
+      - value: "1:1"
+        label: { en_US: "1:1", zh_Hans: "1:1" }
+  - name: duration
+    type: number
+    required: false
+    form: llm
+    label:
+      en_US: Duration
+      zh_Hans: 时长
+    human_description:
+      en_US: Clip length in seconds, where the model offers a choice.
+      zh_Hans: 时长
+    llm_description: >-
+      Clip length in seconds, where the model offers a choice.
+  - name: model
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Model
+      zh_Hans: 模型
+    human_description:
+      en_US: Optional model id, e.g. veo-3-1, kling-3-0, seedance-2. Empty uses minimax-h3-fast.
+      zh_Hans: 模型
+    llm_description: >-
+      Optional model id, e.g. veo-3-1, kling-3-0, seedance-2. Empty uses minimax-h3-fast.
+extra:
+  python:
+    source: tools/generate_video.py

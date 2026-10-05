@@ -1,0 +1,65 @@
+identity:
+  name: generate_image
+  author: hanshs474
+  label:
+    en_US: Generate image
+    zh_Hans: 生成图片
+description:
+  human:
+    en_US: >-
+      Turn a prompt into an image on SayMaker. Default model saymaker-image-v1; set model to nano-banana-2, gpt-image-2-5-flare or seedream-5-pro for others.
+    zh_Hans: 生成图片
+  llm: >-
+    Generate one image from a text prompt and return its URL. Use this when there is no source photo; to change an existing photo use edit_image.
+parameters:
+  - name: prompt
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Prompt
+      zh_Hans: 提示词
+    human_description:
+      en_US: What to make. Name subject, lighting, medium and framing; for an edit, the change and what must stay.
+      zh_Hans: 提示词
+    llm_description: >-
+      What to make. Name subject, lighting, medium and framing; for an edit, the change and what must stay.
+  - name: aspect_ratio
+    type: select
+    required: false
+    form: llm
+    label:
+      en_US: Aspect ratio
+      zh_Hans: 画面比例
+    human_description:
+      en_US: Shape of the output.
+      zh_Hans: 画面比例
+    llm_description: >-
+      Shape of the output.
+    default: "1:1"
+    options:
+      - value: "1:1"
+        label: { en_US: "1:1", zh_Hans: "1:1" }
+      - value: "16:9"
+        label: { en_US: "16:9", zh_Hans: "16:9" }
+      - value: "9:16"
+        label: { en_US: "9:16", zh_Hans: "9:16" }
+      - value: "4:3"
+        label: { en_US: "4:3", zh_Hans: "4:3" }
+      - value: "3:4"
+        label: { en_US: "3:4", zh_Hans: "3:4" }
+  - name: model
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Model
+      zh_Hans: 模型
+    human_description:
+      en_US: Optional model id, e.g. nano-banana-2, gpt-image-2-5-flare, seedream-5-pro. Empty uses saymaker-image-v1.
+      zh_Hans: 模型
+    llm_description: >-
+      Optional model id, e.g. nano-banana-2, gpt-image-2-5-flare, seedream-5-pro. Empty uses saymaker-image-v1.
+extra:
+  python:
+    source: tools/generate_image.py

@@ -1,0 +1,53 @@
+identity:
+  name: edit_image
+  author: hanshs474
+  label:
+    en_US: Edit image
+    zh_Hans: 编辑图片
+description:
+  human:
+    en_US: >-
+      Change one thing in a photo and keep the rest. Say what must stay as well as what changes.
+    zh_Hans: 编辑图片
+  llm: >-
+    Edit the image at image_url following the prompt and return the new image URL. The prompt must name the change and what must stay unchanged.
+parameters:
+  - name: prompt
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Prompt
+      zh_Hans: 提示词
+    human_description:
+      en_US: What to make. Name subject, lighting, medium and framing; for an edit, the change and what must stay.
+      zh_Hans: 提示词
+    llm_description: >-
+      What to make. Name subject, lighting, medium and framing; for an edit, the change and what must stay.
+  - name: image_url
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Image URL
+      zh_Hans: 图片地址
+    human_description:
+      en_US: Public http(s) URL of the photo to edit.
+      zh_Hans: 图片地址
+    llm_description: >-
+      Public http(s) URL of the photo to edit.
+  - name: model
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Model
+      zh_Hans: 模型
+    human_description:
+      en_US: Optional model id, e.g. nano-banana-2, gpt-image-2-5-flare. Empty uses nano-banana-2-lite.
+      zh_Hans: 模型
+    llm_description: >-
+      Optional model id, e.g. nano-banana-2, gpt-image-2-5-flare. Empty uses nano-banana-2-lite.
+extra:
+  python:
+    source: tools/edit_image.py

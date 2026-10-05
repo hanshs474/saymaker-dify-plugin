@@ -1,0 +1,36 @@
+identity:
+  author: hanshs474
+  name: saymaker
+  label:
+    en_US: SayMaker
+    zh_Hans: SayMaker
+  description:
+    en_US: >-
+      Image and video generation on SayMaker (https://saymaker.ai). Paste an API
+      key from https://saymaker.ai/settings/apikeys; runs use your account's
+      credits and plan, exactly as on the site.
+    zh_Hans: >-
+      SayMaker（https://saymaker.ai）的图片与视频生成。填入在
+      https://saymaker.ai/settings/apikeys 创建的 API key；调用按你账号的积分和套餐计算，与网站一致。
+  icon: icon.png
+credentials_for_provider:
+  api_key:
+    type: secret-input
+    required: true
+    label:
+      en_US: API key
+      zh_Hans: API key
+    placeholder:
+      en_US: sk-...
+      zh_Hans: sk-...
+    help:
+      en_US: Create one at saymaker.ai/settings/apikeys
+      zh_Hans: 在 saymaker.ai/settings/apikeys 创建
+    url: https://saymaker.ai/settings/apikeys?utm_source=dify&utm_medium=plugin
+tools:
+  - tools/generate_image.yaml
+  - tools/edit_image.yaml
+  - tools/generate_video.yaml
+extra:
+  python:
+    source: provider/saymaker.py

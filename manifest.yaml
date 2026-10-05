@@ -1,0 +1,45 @@
+version: 0.0.1
+type: plugin
+author: hanshs474
+name: saymaker
+label:
+  en_US: SayMaker
+  zh_Hans: SayMaker
+description:
+  en_US: >-
+    Generate images and video from a Dify workflow or agent on SayMaker
+    (https://saymaker.ai): Veo 3.1, Kling 3.0, Seedance 2.0, MiniMax H3,
+    Nano Banana 2, GPT Image 2.5 and Seedream 5.0 on one API key. Text to
+    image, photo edits that keep what you say must stay, and text or image to
+    video.
+  zh_Hans: >-
+    在 Dify 工作流或 Agent 里用 SayMaker（https://saymaker.ai）生成图片和视频：
+    Veo 3.1、Kling 3.0、Seedance 2.0、MiniMax H3、Nano Banana 2、GPT Image 2.5、
+    Seedream 5.0，一个 API key 全部可用。支持文生图、保留指定内容的改图，以及文生视频和图生视频。
+icon: icon.png
+resource:
+  memory: 33554432
+  permission:
+    tool:
+      enabled: true
+plugins:
+  tools:
+    - provider/saymaker.yaml
+meta:
+  version: 0.0.1
+  arch:
+    - amd64
+    - arm64
+  runner:
+    language: python
+    version: "3.12"
+    entrypoint: main
+  minimum_dify_version: null
+privacy: PRIVACY.md
+repo: https://github.com/hanshs474/saymaker-dify-plugin
+contact: support@saymaker.ai
+network:
+  domains:
+    - saymaker.ai
+    - cdn.saymaker.ai
+created_at: 2026-10-06T10:00:00.000000+08:00
